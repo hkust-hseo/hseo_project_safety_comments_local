@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+
+html
+{
+	font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif !important;
+	background-color: #EEEEEE;
+}
+
+header
+{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+
+	background-color: #111111;
+	padding: 30px 40px;
+
+	font-size: 30px;
+	color: #eeeeee;
+	font-weight: 100;
+}
+
+header img
+{
+	height: 50px;
+	position: absolute;
+	top: 25px;
+	right: 50px;
+}
+
+p{
+	line-height: 10%;
+}

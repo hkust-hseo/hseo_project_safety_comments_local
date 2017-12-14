@@ -1,0 +1,80 @@
+@charset "utf-8";
+/* CSS Document */
+
+textarea
+{
+  width: 95%;
+  height: 80px;
+}
+
+#save_comments
+{
+  height: 50px;
+  width: 150px;
+
+  border: none;
+  background-color: #045E9D;
+
+  color: #FFFFFF;
+  font-size: 15px;
+}
+
+#complete_review
+{
+  height: 50px;
+  width: 150px;
+
+  border: none;
+  background-color: #429442;
+
+  color: #FFFFFF;
+  font-size: 15px;
+
+  position: relative;
+  left: 55%;
+  bottom: 50px;
+}
+
+#save_comments:hover, #save_comments:active
+{
+  background-color: #046DB6;
+}
+
+#complete_review:hover, #complete_review:active
+{
+  background-color: #56A056;
+}
+
+iframe
+{
+  height: 75%;
+  width: 45%;
+
+  position: absolute;
+  top: 150px;
+  right: 50%;
+}
+
+#comments
+{
+	height: 80%;
+  width: 40%;
+
+	position: absolute;
+	top: 150px;
+	left: 55%;
+	bottom: 20px;
+
+	color: #111111;
+	font-size: 18px;
+	font-weight: 100;
+
+  overflow: auto;
+}
+
+#no_pdf_msg
+{
+  position: absolute;
+  top: 45%;
+  left: 45%;
+}

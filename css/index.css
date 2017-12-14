@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*TODO: set left right limit*/
+a:link, a:visited
+{
+
+  /*TODO: js to change into top-bottom form*/
+
+/*  background-color: #333333; */
+
+  font-size: 20px;
+  color: #222222;
+  text-decoration: none;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+a:hover, a:active
+{
+/*  background-color: #444444; */
+  color: #555555;
+  text-decoration: underline;
+}
+
+div.links
+{
+  position: absolute;
+  top: 120px;
+  left: 50px;
+}
+
+p
+{
+  font-size: 20px;
+}

@@ -1,0 +1,58 @@
+table {
+    width: 90%;
+    padding: 0px;
+}
+
+.search_table {
+    outline: 1px solid #AAAAAA;
+    position: absolute;
+    top: 120px;
+    left: 50px;
+}
+
+#results {
+    position: absolute;
+    top: 300px;
+    left: 50px;
+}
+
+#result_header{
+    display: block;
+
+    border-color: #111111;
+}
+#result_header >> td {
+    border-color: #111111;
+}
+
+#result_display {
+    display: block;
+    height: 50vh;
+
+    overflow-y: auto;
+}
+
+.table_title
+{
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#search_button {
+  height: 30px;
+  width: 100px;
+
+  border: none;
+  background-color: #429442;
+
+  color: #FFFFFF;
+  font-size: 15px;
+}
+
+
+#memo_button {
+  position: absolute;
+
+  bottom: 50px;
+  right: 50px;
+}

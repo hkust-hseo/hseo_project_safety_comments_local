@@ -1,0 +1,28 @@
+form
+{
+  position: absolute;
+  top: 100px;
+  left: 50px;
+
+  padding-top: 25px;
+
+  color: #111111;
+  font-size: 18px;
+}
+
+form input[type=submit]
+{
+  height: 20px;
+  width: 60px;
+
+  border: none;
+  background-color: #429442;
+
+  color: #FFFFFF;
+  font-size: 12px;
+}
+
+form input[type=submit]:hover, form input[type=submit]:active
+{
+  background-color: #56A056;
+}

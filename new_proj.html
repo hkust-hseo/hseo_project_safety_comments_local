@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel = "stylesheet" type = "text/css" href = "css/universal.css">
+<link rel = "stylesheet" type = "text/css" href = "css/new_proj.css">
+<title>New Project</title>
+
+<script src="jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	function formatDate(date)
+	{
+		var day = date.getDate();
+		if(parseInt(day) < 10) {
+			temp = day;
+			day = "0" + temp;
+		}
+		var month = date.getMonth()+1;
+		if(parseInt(month) < 10) {
+			temp = month;
+			month = "0" + temp;
+		}
+		var year = date.getFullYear();
+		var date = year + "-" + month + "-" + day;
+
+		return date;
+	}
+
+	function autoDate()
+	{
+		var days_due = 14;
+		var today = new Date();
+		var due = new Date();
+		due.setDate(today.getDate() + days_due);
+
+		// convert to proper format
+		today = formatDate(today);
+		due = formatDate(due);
+
+		document.getElementById("receive_date").value = today;
+		document.getElementById("due_date").value = due;
+
+	}
+
+	function checkFileEmpty()
+	{
+		if(document.getElementById("upload_file").files.length != 0){
+			document.getElementById("upload_file").style.color = "black";
+		}
+		return 0;
+	};
+
+	function checkDates() {
+		var receive_date = new Date();
+		receive_date = document.getElementById("receive_date").value;
+		var due_date = new Date();
+		due_date = document.getElementById("due_date").value;
+
+		if(due_date < receive_date){
+			alert("Due date must not be earlier than receive date.");
+			return false;
+		}
+		else {
+			return true;
+		}
+	};
+
+	function validateData(){
+		if (checkDates())
+			document.getElementById("details_form").submit();
+	}
+</script>
+
+</head>
+
+<body onload="autoDate()">
+	<header>
+	  Create New Project
+	  <a href = "http://143.89.195.131/hseo_project_safety_comments"><img src = "img/hkust_logo_white.png"/></a>
+	</header>
+
+<form action = "new_proj.php" id="details_form" method = "post" enctype = "multipart/form-data">
+	Reference Number:<br/>
+	<input type = "text" name = "ref_no" required>
+	<br/>
+
+	Project Title:<br/>
+	<input type = "text" name = "proj_title" required>
+	<br/>
+
+	Date Received from Department:<br/>
+	<input id = 'receive_date' type = "date" name = "receive_date">
+<!--	<script type = "text/javascript">
+		document.getElementById('receive_date').value = Date();
+	</script>
+-->
+	<br/>
+
+	Department:<br/>
+<!--	<select name = "dept">
+		<!--More selection
+		<option value = "">---</option>
+		<option value = "CBME">CBME</option>
+		<option value = "CHEM">CHEM</option>
+	</select>
+-->
+	<input type = "text" name = "dept">
+	<br/>
+
+	Location (Room number): <br/>
+	<input type = "text" name = "room">
+	<br/>
+
+	Name of Researcher(s): (Separated with comma) <br/>
+  <input type = "text" name = "researcher">
+	<br/>
+
+	Name of Supervisor(s): (Separated with comma) <br/>
+  <input type = "text" name = "supervisor">
+	<br/>
+
+	Extension:<br/>
+	<input type = "number" name = "extn">
+	<br/>
+
+	Due Date:<br/>
+	<input id = 'due_date' type = "date" name = "due_date">
+<!--	<script type = 'text/javascript'>
+		var new_date = new Date(this.valueOf());
+		new_date.setDate(new_date.getDate() + 14);
+		document.getElementById('due_date').value = new_date;
+	</script>
+-->
+	<br/>
+
+	Upload Proposal:<br/>
+	<input type = "file" name = "proj_file" id = "upload_file" onchange = "checkFileEmpty()" accept = "application/pdf">
+	<br/><br/>
+
+	<input type = "button" value = "Create New Project" id="submit_button" onclick="validateData()">
+</form>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+        <head>
+          <meta charset="utf-8">
+          <link rel = "stylesheet" type = "text/css" href = "css/universal.css">
+          <link rel = "stylesheet" type = "text/css" href = "css/proj_directory.css">
+
+          <title>Project Directory</title>
+
+          <script src="jquery-3.2.1.js"></script>
+          <script src="proj_directory.js"></script>
+        </head>
+<body><header>
+        Project Directory
+        <a href = "http://143.89.195.131/hseo_project_safety_comments"><img src = "img/hkust_logo_white.png"/></a>
+      </header>
+
+      <table class="search_table">
+        <tr><td class="table_title">Search</td></tr>
+        <tr>
+          <td>Reference Number:</td>
+          <td>Supervisor(s):</td>
+          <td>Title:</td>
+          <td>Location:</td>
+          <td>Reviewer:</td>
+        </tr>
+        <form id="search_form"> <tr>
+          <td><input id="ref_no_input" type="text" style="width: 80px;"/></td>
+          <td><input id="supervisor_input" type="text" style="width: 150px;"/></td>
+          <td><input id="title_input" type="text" style="width: 200px;"/></td>
+          <td><input id="room_input" type="text" style="width: 80px;"/></td>
+          <td><input id="reviewer_input" type="text" style="width: 150px;"/></td>
+        </tr>
+        <tr>
+          <td><input id="completed" name="complete" type="radio"/>Completed Only
+          <br/><input id="incomplete" name="complete" type="radio"/>Incomplete Only
+          <br/><input id="all_reviews" name="complete" type="radio" checked/>All Reviews</td>
+          <td><input id="sent" type="checkbox"/>Memo Sent</td>
+          <td/>
+          <td/>
+          <td><button type="button" onclick="search()" id="search_button"/>Search</button></td>
+        </tr> </form>
+      </table>
+
+      <table id="results">
+        <thead id="result_header">
+          <tr style="background-color:#111111; color:#CCCCCC;">
+            <td style="width:20px;"></td>
+            <td style="width:200px;">Ref No.</td>
+            <td style="width:550px;">Title</td>
+            <td style="width:200px;">Supervisor(s)</td>
+            <td style="width:300px;">Location</td>
+            <td style="width:80px;">Completed</td>
+            <td style="width:80px;">Memo</td>
+            <td style="width:80px;">Sent</td>
+            <td style="width:60px;"></td>
+          </tr>
+        </thead>
+        <tbody id="result_display"></tbody>
+      </table>
+
+      <button id="memo_button" onclick="genMemo()">Generate Memo</button>
+
+</body></html>

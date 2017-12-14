@@ -1,0 +1,22 @@
+#proj_details {
+  position: absolute;
+  top: 120px;
+  left: 30px;
+}
+
+.details_header {
+  width: 160px;
+}
+
+h4 {
+  font-size: 22px;
+  font-weight: bold;
+  padding: 0px;
+  margin: 0px;
+}
+
+/*iframe {
+  position: relative;
+  height: 100%;
+  width: 90%;
+}*/

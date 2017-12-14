@@ -1,0 +1,12 @@
+#pending_list {
+  position: absolute;
+  top: 120px;
+  left: 50px;
+
+  border: 1px solid #AAAAAA;
+}
+
+#list_header {
+  background-color: #111111;
+  color: #CCCCCC;
+}

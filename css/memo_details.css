@@ -1,0 +1,24 @@
+#memo_file {
+  position: absolute;
+  top: 120px;
+  left: 50px;
+  width: 100%;
+}
+
+#projects {
+  position: absolute;
+  top: 120px;
+  right: 50px;
+  width: 30%;
+}
+
+iframe {
+  width: 50%;
+  height: 75%;
+}
+
+button {
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+}

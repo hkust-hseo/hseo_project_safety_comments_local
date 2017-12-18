@@ -23,7 +23,7 @@
   <body>
   <header>
   	Modify Project
-  	<a href = "http://143.89.195.131/hseo_project_safety_comments"><img src = "img/hkust_logo_white.png"/></a>
+  	<a href = "http://143.89.148.116/hseo_project_safety_comments_dev"><img src = "img/hkust_logo_white.png"/></a>
   </header>
 
 <?php
@@ -180,7 +180,7 @@
     mysqli_query($db, $file_query) or die("File Query Failed. ");
 */
   echo '<html><head><link rel = "stylesheet" type = "text/css" href = "css/universal.css"><link rel = "stylesheet" type = "text/css" href = "../css/new_proj.css"></head><body>';
-  echo '<header>Modify Project<a href = "http://143.89.195.131/hseo_project_safety_comments"><img src = "img/hkust_logo_white.png"/></a></header>';
+  echo '<header>Modify Project<a href = "http://143.89.148.116/hseo_project_safety_comments_dev"><img src = "img/hkust_logo_white.png"/></a></header>';
   echo '<a style = "position: absolute; top: 120px; left: 50px;" href = "proj_comment.php?ref_no='.$ref_no.'" id = "next_button">Add Comments</a>';
   echo '</body></html>';
 

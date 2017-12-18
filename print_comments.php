@@ -116,6 +116,7 @@
 			$cont_char = 0;
 			while ($char_ptr < strlen($text))
 			{
+				// TODO: take into account full words
 				$word_length = 0;
 				// new line detected
 				if ($text[$char_ptr] == "\n") {
@@ -141,7 +142,7 @@
 
 		function CommentRow($area, $comment, $pic)
 		{
-			// full text = comment with name of pic and Date
+			// full_text = comment with name of pic and Date
 			$full_text = "";
 
 			if (!empty($pic)){

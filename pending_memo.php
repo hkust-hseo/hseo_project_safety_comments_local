@@ -54,7 +54,7 @@
 
 <body><header>
 Pending Memos
-<a href = "http://143.89.148.116/hseo_project_safety_comments_dev"><img src = "img/hkust_logo_white.png"/></a>
+<a href = "index.html"><img src = "img/hkust_logo_white.png"/></a>
 </header>
 
   <table id="pending_list">

@@ -157,7 +157,7 @@ function displayRow(output_row, background_color) {
   details_td.appendChild(details_link);
   display_row.appendChild(details_td);
 
-  display_row.setAttribute("style", "background-color:"+background_color+";");
+  display_row.setAttribute("style", "height:35px; background-color:"+background_color+";");
 
   document.getElementById("result_display").appendChild(display_row);
 

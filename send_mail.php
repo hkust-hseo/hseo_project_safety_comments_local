@@ -100,7 +100,7 @@
     // Put in corresponding receiver details
     //  if ($dept == "CBE") {}
     // TODO: sub out own test email
-    initMail($mail, cbe_mail);
+    initMail($mail, cbe_email);
 
 
     // SQL to fetch all related file links

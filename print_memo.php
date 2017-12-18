@@ -97,7 +97,9 @@
     }
 
     function printEnd() {
+      $this -> SetFont('Times', '', 12);
       $this -> SetY(200);
+      $this -> Image('img/director_signature.jpg', null, null, 50);
       $this -> MultiCell(0, 5, director . "\nDirector of Health, Safety and Environment\n\nJK/sh\n\nEnc", 0, "L");
     }
   }

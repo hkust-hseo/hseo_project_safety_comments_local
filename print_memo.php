@@ -4,7 +4,6 @@
 
   // Constants
   define("director", "Joseph Kwan");    // director of HSEO
-  define("director_email", "sepopcip@ust.hk");  // Email of director of HSEO (for sending notification email)
   define("cbe_via", "Mrs. Pauline Leung");
   define("bien_via", "Miss Inez Tsui");
 
@@ -174,8 +173,6 @@
 
   // Send email with send_mail.php
   $mode = "pending_memo";
-
-  $receiver_email = director_email;
   include("send_mail.php");
 
   echo $memo_link;

@@ -1,26 +1,40 @@
 <?php
   require "ref/PHPMailer-master/PHPMailerAutoload.php";
 
+  // email content definitions
   define("from_address", "srapproval@ust.hk");
-  define("to_address", $receiver_email);
   define("body_ending", "Yours,<br/>System Admin");
 
-  $mail = new PHPMailer;
+  // contact definitions
+  define("director_email", "ylauad@connect.ust.hk");
+  define("cbe_email", "ylauad@connect.ust.hk");
+  define("bien_email", "ylauad@connect.ust.hk");
 
-  $mail->IsSMTP();
-  $mail->Host = "smtp.ust.hk";
-  $mail->Port = 587;
-  $mail->SMTPAuth = true;
-  $mail->Username = "srapproval@ust.hk";
-  $mail->Password = "srhseosr";
+  // TODO: remove this by finding a way to GET from print_memo.php
+  if(!isset($mode)){
+    $mode = $_GET['mode'];
+  }
 
-  $mail->setFrom(from_address, "System Admin");
-  $mail->addAddress(to_address);
+  function initMail($mail, $receiver_email) {
+    $mail->IsSMTP();
+    $mail->Host = "smtp.ust.hk";
+    $mail->Port = 587;
+    $mail->SMTPAuth = true;
+    $mail->Username = "srapproval@ust.hk";
+    $mail->Password = "srhseosr";
 
-  $mail->isHTML(true);
+    $mail->setFrom(from_address, "System Admin");
+    $mail->addAddress($receiver_email);
+
+    $mail->isHTML(true);
+  }
 
   // Send to HSEO Director about pending memos
   if($mode == "pending_memo") {
+    // Create mail container and header
+    $mail = new PHPMailer;
+    initMail($mail, director_email);
+
     // variables
     $memo_url = "143.89.195.131/hseo_project_safety_comments/pending_memo.php";    // URL of pending memo page
 

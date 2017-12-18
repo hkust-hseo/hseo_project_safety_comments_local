@@ -1,17 +1,16 @@
 <?php
-
   require("db_connect.php");
 
-  $memo_no = $_GET['memo_no'];
+  $memo_no = $_GET['memo_no'];    // memo number passed via URL
 
-  $ref_array = array();
+  $ref_array = array();   // Array to store all ref_no of linked projects
   $ref_count = 0;
 
-  $get_ref_query = "SELECT ref_no FROM proj_details WHERE memo = '$memo_no';";
+  $get_ref_query = "SELECT ref_no FROM proj_details WHERE memo = '$memo_no';";    // To get reference number of all projects linked to this memo
   mysqli_real_query($db, $get_ref_query);
-  $result = mysqli_store_result($db);
+  $result = mysqli_store_result($db);       // Getting results from database
   while($row = mysqli_fetch_array($result)) {
-    $ref_array[$ref_count++] = $row['ref_no'];
+    $ref_array[$ref_count++] = $row['ref_no'];    // for each row of result (ref_no), put it in array
   }
 ?>
 
@@ -34,7 +33,7 @@
           url: "memo_sent.php",
           type: "post",
           data: {
-            memo_no: memo_no
+            memo_no: memo_no    // passing memo_no to mark column 'sent' = true in database
           }
       });
       confirm_sent.done(function(){
@@ -47,7 +46,7 @@
 
 <body><header>
 Memo Details
-<a href = "http://143.89.195.131/hseo_project_safety_comments"><img src = "img/hkust_logo_white.png"/></a>
+<a href = "http://143.89.148.116/hseo_project_safety_comments_dev"><img src = "img/hkust_logo_white.png"/></a>
 </header>
 
 <div id="memo_file">

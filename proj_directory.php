@@ -105,8 +105,6 @@
   }
   $query .= ";";
 
-  //echo $query;
-
   // Execute query
   $data_count = 0;
   $results = array();

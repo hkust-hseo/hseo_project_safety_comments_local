@@ -62,11 +62,6 @@
 
   $details_query = $insert_query . $values_query;   // concat to form full query
 
-/*  $details_query = "INSERT INTO proj_details (ref_no, receive_date, due_date, proj_title, dept, room, supervisor, extn) ".
-                  "VALUES ('$ref_no', '$receive_date', '$due_date', '$proj_title', '$dept', '$room', '$supervisor', $extn)";
-*/
-//  echo $details_query;
-
   mysqli_query($db, $details_query) or die("Details Query Failed. ");
 
   $file_size = $_FILES['proj_file']['size'];

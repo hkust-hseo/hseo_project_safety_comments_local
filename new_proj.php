@@ -62,11 +62,6 @@
 
   $details_query = $insert_query . $values_query;   // concat to form full query
 
-/*  $details_query = "INSERT INTO proj_details (ref_no, receive_date, due_date, proj_title, dept, room, supervisor, extn) ".
-                  "VALUES ('$ref_no', '$receive_date', '$due_date', '$proj_title', '$dept', '$room', '$supervisor', $extn)";
-*/
-//  echo $details_query;
-
   mysqli_query($db, $details_query) or die("Details Query Failed. ");
 
   $file_size = $_FILES['proj_file']['size'];
@@ -84,7 +79,7 @@
     mysqli_query($db, $file_query) or die("File Query Failed. ");
   }
 
-  echo '<html><head><link rel = "stylesheet" type = "text/css" href = "css/universal.css"><link rel = "stylesheet" type = "text/css" href = "../css/new_proj.css"><header>New Project<a href = "http://143.89.195.131/hseo_project_safety_comments"><img src = "img/hkust_logo_white.png"/></a></header></head><body>';
+  echo '<html><head><link rel = "stylesheet" type = "text/css" href = "css/universal.css"><link rel = "stylesheet" type = "text/css" href = "../css/new_proj.css"><header>New Project<a href = "index.html"><img src = "img/hkust_logo_white.png"/></a></header></head><body>';
   echo '<a style = "position: absolute; top: 120px; left: 50px;" href = "proj_comment.php?ref_no='.$ref_no.'" id = "next_button">Add Comments</a>';
   echo '</body></html>';
 

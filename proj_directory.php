@@ -103,9 +103,7 @@
     }
     $query .= "AND sent = 1 ";
   }
-  $query .= ";";
-
-  //echo $query;
+  $query .= "ORDER BY due_date DESC;";
 
   // Execute query
   $data_count = 0;

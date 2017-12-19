@@ -6,9 +6,9 @@
   define("body_ending", "Yours,<br/>System Admin");
 
   // contact definitions
-  define("director_email", "ylauad@connect.ust.hk");
-  define("cbe_email", "ylauad@connect.ust.hk");
-  define("bien_email", "ylauad@connect.ust.hk");
+  define("director_email", "sepopcip@ust.hk");
+  define("cbe_email", "sepopcip@ust.hk");
+  define("bien_email", "sepopcip@ust.hk");
 
   // TODO: remove this by finding a way to GET from print_memo.php
   if(!isset($mode)){
@@ -36,7 +36,7 @@
     initMail($mail, director_email);
 
     // variables
-    $memo_url = "143.89.195.131/hseo_project_safety_comments/pending_memo.php";    // URL of pending memo page
+    $memo_url = "143.89.148.116/hseo_project_safety_comments_local/pending_memo.php";    // URL of pending memo page
 
     $mail->Subject = "Pending Memos";
 
@@ -100,7 +100,7 @@
     // Put in corresponding receiver details
     //  if ($dept == "CBE") {}
     // TODO: sub out own test email
-    initMail($mail, "lauy1997@gmail.com");
+    initMail($mail, cbe_email);
 
 
     // SQL to fetch all related file links

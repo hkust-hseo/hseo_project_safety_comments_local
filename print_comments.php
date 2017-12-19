@@ -146,9 +146,15 @@
 			$full_text = "";
 
 			if (!empty($pic)){
-				$full_text .= "Name" . "       " . "Signature" ."        ". "Date";
+				$full_text .= "Name" . "                          ". "Date";
 				$full_text .= "\n\n";
+				$date = date('Y/m/d');
 				$full_text .= $pic;
+				// for loop to get the correct number of spaces
+				for ($i = 0; $i < 30-strlen($pic); $i++) {
+					$full_text .= " ";
+				}
+				$full_text .= $date;
 				$full_text .= "\n\n";
 			}
 

@@ -6,9 +6,9 @@
   define("body_ending", "Yours,<br/>System Admin");
 
   // contact definitions
-  define("director_email", "sepopcip@ust.hk");
-  define("cbe_email", "sepopcip@ust.hk");
-  define("bien_email", "sepopcip@ust.hk");
+  define("director_email", "ylauad@connect.ust.hk");
+  define("cbe_email", "ylauad@connect.ust.hk");
+  define("bien_email", "ylauad@connect.ust.hk");
 
   // TODO: remove this by finding a way to GET from print_memo.php
   if(!isset($mode)){

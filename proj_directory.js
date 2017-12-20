@@ -57,7 +57,7 @@ function search() {
     }
     else {
       var results = JSON.parse(response);
-      console.log(response);
+      //console.log(response);
       displayResults(results);
     }
   });
@@ -210,8 +210,33 @@ function genMemo()
       }
   });
   memo_request.done(function(memo_link){
-    console.log(memo_link);
-    window.open(memo_link);
+    memo_pdf = window.open(memo_link);
+    // Confirmation pop-up
+    // discuss to use wait time or scroll detection
+
+    var memo_interval = setInterval(function() {
+      console.log("1s passed, memo_pdf.closed is " + memo_pdf.closed);
+      if(memo_pdf.closed !== false) {
+        // stop the checking closed interval
+        clearInterval(memo_interval);
+
+        if (window.confirm("Send memo?") == true) {
+          // Update memo details in database with a new php
+          // calling send_mail here
+          var send_pending_memo;
+
+          send_pending_memo = $.ajax({
+            url: "send_mail.php",
+            type: "post",
+            data: {
+              mode: "pending_memo",
+              ref_array: php_array
+            }
+          });
+        }
+      }
+    }, 1000);
+
   });
 
   return 0;

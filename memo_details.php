@@ -29,7 +29,7 @@
 
       send_memo = $.ajax({
         url: "send_mail.php",
-        type: "get",
+        type: "post",
         data: {
           mode: "send_memo",
           memo_no: memo_no

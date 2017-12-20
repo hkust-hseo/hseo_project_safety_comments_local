@@ -10,10 +10,7 @@
   define("cbe_email", "ylauad@connect.ust.hk");
   define("bien_email", "ylauad@connect.ust.hk");
 
-  // TODO: remove this by finding a way to GET from print_memo.php
-  if(!isset($mode)){
-    $mode = $_GET['mode'];
-  }
+  $mode = $_POST['mode'];
 
   function initMail($mail, $receiver_email) {
     $mail->IsSMTP();
@@ -31,6 +28,13 @@
 
   // Send to HSEO Director about pending memos
   if($mode == "pending_memo") {
+    // get array of ref_no
+    $ref_pass = $_POST["ref_array"];
+    $ref_array = json_decode($ref_pass, true);
+    $ref_count = 0;
+    for($ref_count = 0; !empty($ref_array[$ref_count]); $ref_count++); // count number of ref_no passed into php
+
+
     // Create mail container and header
     $mail = new PHPMailer;
     initMail($mail, director_email);

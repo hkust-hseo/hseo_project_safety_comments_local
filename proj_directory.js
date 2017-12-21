@@ -209,19 +209,30 @@ function genMemo()
         ref_array: php_array
       }
   });
-  memo_request.done(function(memo_link){
+  memo_request.done(function(memo_no){
+    memo_link = "documents/memos/" + memo_no + ".pdf";
     memo_pdf = window.open(memo_link);
     // Confirmation pop-up
     // discuss to use wait time or scroll detection
 
     var memo_interval = setInterval(function() {
-      console.log("1s passed, memo_pdf.closed is " + memo_pdf.closed);
       if(memo_pdf.closed !== false) {
         // stop the checking closed interval
         clearInterval(memo_interval);
 
         if (window.confirm("Send memo?") == true) {
           // Update memo details in database with a new php
+          var update_memo_db;
+
+          update_memo_db = $.ajax({
+            url: "memo_generated.php",
+            type: "post",
+            data: {
+              memo_no: memo_no,
+              ref_array: php_array
+            }
+          });
+
           // calling send_mail here
           var send_pending_memo;
 

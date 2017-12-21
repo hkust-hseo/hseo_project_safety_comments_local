@@ -220,7 +220,7 @@ function genMemo()
         // stop the checking closed interval
         clearInterval(memo_interval);
 
-        if (window.confirm("Send memo?") == true) {
+        if (window.confirm("Confirm memo generation?") == true) {
           // Update memo details in database with a new php
           var update_memo_db;
 

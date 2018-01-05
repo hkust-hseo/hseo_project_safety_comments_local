@@ -176,14 +176,13 @@
 			$currentY = parent::GetY();
 
 			if($height + $currentY > $this->h - 20) {
-				// create new page then attach row
+				// create new page and draw top table border
 				$this -> AddPage("P", "A4");
 				$this -> SetY(30);
-				// top border of table
 				$this -> Line(10, 30, $this->w-10, 30);
 				// resets currentY for later
 				$currentY = parent::GetY();
-			}
+			} // resume to normal insert row
 
 			$this -> MultiCell(40, 5, $area, 'B', 'C');
 			$this -> SetXY(50, $currentY);

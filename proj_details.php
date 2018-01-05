@@ -93,6 +93,7 @@
     </tr>
     <tr>
       <td><a href="<?php echo "mod_proj.php?ref_no=".$ref_no; ?>"><button>Modify Project Details</button></a></td>
+      <td><a href="<?php echo "proj_comment.php?ref_no=".$ref_no; ?>"><button>Project Review</button></a></td>
     </tr>
   </table>
 

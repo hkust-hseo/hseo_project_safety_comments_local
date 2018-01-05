@@ -12,7 +12,7 @@
 			parent::__construct();
 			$this -> SetTitle($ref_no." Review");			//document title
 			$this -> SetAuthor("HSEO HKUST");								//pdf author
-			$this -> AddPage();
+			$this -> AddPage("P", "A4");
 		}
 
 		function CreateHeader()
@@ -174,6 +174,17 @@
 			//echo "height = ".$height."\n";
 
 			$currentY = parent::GetY();
+
+			if($height + $currentY > $this->h - 20) {
+				// create new page then attach row
+				$this -> AddPage("P", "A4");
+				$this -> SetY(30);
+				// top border of table
+				$this -> Line(10, 30, $this->w-10, 30);
+				// resets currentY for later
+				$currentY = parent::GetY();
+			}
+
 			$this -> MultiCell(40, 5, $area, 'B', 'C');
 			$this -> SetXY(50, $currentY);
 			if (!empty($full_text)){

@@ -57,7 +57,7 @@ function search() {
     }
     else {
       var results = JSON.parse(response);
-      console.log(response);
+      //console.log(response);
       displayResults(results);
     }
   });
@@ -209,9 +209,45 @@ function genMemo()
         ref_array: php_array
       }
   });
-  memo_request.done(function(memo_link){
-    console.log(memo_link);
-    window.open(memo_link);
+  memo_request.done(function(memo_no){
+    memo_link = "documents/memos/" + memo_no + ".pdf";
+    memo_pdf = window.open(memo_link);
+    // Confirmation pop-up
+    // discuss to use wait time or scroll detection
+
+    var memo_interval = setInterval(function() {
+      if(memo_pdf.closed !== false) {
+        // stop the checking closed interval
+        clearInterval(memo_interval);
+
+        if (window.confirm("Confirm memo generation?") == true) {
+          // Update memo details in database with a new php
+          var update_memo_db;
+
+          update_memo_db = $.ajax({
+            url: "memo_generated.php",
+            type: "post",
+            data: {
+              memo_no: memo_no,
+              ref_array: php_array
+            }
+          });
+
+          // calling send_mail here
+          var send_pending_memo;
+
+          send_pending_memo = $.ajax({
+            url: "send_mail.php",
+            type: "post",
+            data: {
+              mode: "pending_memo",
+              ref_array: php_array
+            }
+          });
+        }
+      }
+    }, 1000);
+
   });
 
   return 0;

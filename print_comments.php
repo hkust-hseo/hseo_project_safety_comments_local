@@ -12,7 +12,7 @@
 			parent::__construct();
 			$this -> SetTitle($ref_no." Review");			//document title
 			$this -> SetAuthor("HSEO HKUST");								//pdf author
-			$this -> AddPage();
+			$this -> AddPage("P", "A4");
 		}
 
 		function CreateHeader()
@@ -174,6 +174,16 @@
 			//echo "height = ".$height."\n";
 
 			$currentY = parent::GetY();
+
+			if($height + $currentY > $this->h - 20) {
+				// create new page and draw top table border
+				$this -> AddPage("P", "A4");
+				$this -> SetY(30);
+				$this -> Line(10, 30, $this->w-10, 30);
+				// resets currentY for later
+				$currentY = parent::GetY();
+			} // resume to normal insert row
+
 			$this -> MultiCell(40, 5, $area, 'B', 'C');
 			$this -> SetXY(50, $currentY);
 			if (!empty($full_text)){
@@ -259,7 +269,7 @@
 	$out_file -> Output('F', $review_link);
 
 	// Add link to database
-	$update_query = "UPDATE proj_files SET review_link = '$review_link' WHERE ref_no = '$ref_no';";
+	$update_query = "INSERT INTO proj_files (ref_no, review_link) VALUES ('$ref_no', '$review_link') ON DUPLICATE KEY UPDATE review_link = '$review_link';";
 	$set_complete = "UPDATE proj_details SET completed = 1 WHERE ref_no = '$ref_no';";
 
   mysqli_query($db, $update_query) or die("Adding review link to files failed. ");

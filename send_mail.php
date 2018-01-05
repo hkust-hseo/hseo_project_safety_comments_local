@@ -6,14 +6,11 @@
   define("body_ending", "Yours,<br/>System Admin");
 
   // contact definitions
-  define("director_email", "sepopcip@ust.hk");
-  define("cbe_email", "sepopcip@ust.hk");
-  define("bien_email", "sepopcip@ust.hk");
+  define("director_email", "ylauad@connect.ust.hk");
+  define("cbe_email", "ylauad@connect.ust.hk");
+  define("bien_email", "ylauad@connect.ust.hk");
 
-  // TODO: remove this by finding a way to GET from print_memo.php
-  if(!isset($mode)){
-    $mode = $_GET['mode'];
-  }
+  $mode = $_POST['mode'];
 
   function initMail($mail, $receiver_email) {
     $mail->IsSMTP();
@@ -31,6 +28,13 @@
 
   // Send to HSEO Director about pending memos
   if($mode == "pending_memo") {
+    // get array of ref_no
+    $ref_pass = $_POST["ref_array"];
+    $ref_array = json_decode($ref_pass, true);
+    $ref_count = 0;
+    for($ref_count = 0; !empty($ref_array[$ref_count]); $ref_count++); // count number of ref_no passed into php
+
+
     // Create mail container and header
     $mail = new PHPMailer;
     initMail($mail, director_email);
@@ -83,7 +87,7 @@
 
   if($mode == "send_memo") {
     $mail = new PHPMailer;
-    $memo_no = $_GET['memo_no'];
+    $memo_no = $_POST['memo_no'];
 
     require("db_connect.php");
 
@@ -118,7 +122,7 @@
       $result = mysqli_store_result($db);
       $row = mysqli_fetch_row($result);
       $files[$files_count]['path'] = $row[0];
-      $files[$files_count]['name'] = $row[1];
+      $files[$files_count]['name'] = $row[1] . ".pdf";
       $files_count++;
   }
 
@@ -128,7 +132,7 @@
     if($result = mysqli_store_result($db)) {
       while($row = mysqli_fetch_row($result)) {
         $files[$files_count]['path'] = $row[0];
-        $files[$files_count]['name'] = $row[1];
+        $files[$files_count]['name'] = $row[1] . ".pdf";
         $files_count++;
       }
     }

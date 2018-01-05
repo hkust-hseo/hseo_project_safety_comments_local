@@ -159,21 +159,5 @@
 	}
 	$out_file -> Output('F', $memo_link);
 
-  // Add new memo to memo_details
-  $add_memo = "INSERT INTO memo_details (memo_no, create_date, file_link) ";
-  $add_memo .= "VALUES ('$memo_no', CURDATE(), '$memo_link');";
-  mysqli_real_query($db, $add_memo) or die("memo insertion failed".mysqli_error($db));
-
-  // Update each ref_no with memo_no
-  for($i = 0; $i < $ref_count; $i++) {
-    $update_memo = "UPDATE proj_details SET memo = '$memo_no' ";
-    $update_memo .= "WHERE ref_no = '". $ref_array[$i]. "';";
-    mysqli_real_query($db, $update_memo);
-  }
-
-  // Send email with send_mail.php
-  $mode = "pending_memo";
-  include("send_mail.php");
-
-  echo $memo_link;
+  echo $memo_no;
 ?>

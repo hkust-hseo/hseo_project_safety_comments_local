@@ -21,7 +21,7 @@ include "db_connect.php";?>
 		// Get all form elements (#comment_form)
 		for(var i = 0; i < 10; i++) {
 			// array index corresponds to physical position on webpage (i.e: [0]=occ_hygiene; [1]=occ_hygiene_pic, etc)
-			input_values[i] = document.getElementById("comment_form")[i].value;			// Get the value of form elements
+			input_values[i] = document.getElementsByClassName("comment_form_elements")[i].value;			// Get the value of form elements
 			console.log("i = " + i + ": value is " + input_values[i]);
 		}
 
@@ -92,58 +92,58 @@ include "db_connect.php";?>
 
 <div id = "comments" >
 	Occupational Hygiene:<br/>
-	<textarea name = "occ_hygiene" form = "comment_form" id = "comment_form"><?php
+	<textarea name = "occ_hygiene" form = "comment_form" class="comment_form_elements"><?php
 		if(!empty($row['occ_hygiene'])) {	// exist result from query
 			// retrieve existing comment as prefilled text in textarea
 			echo $row['occ_hygiene'];
 		}
 	 ?></textarea>
 	<br/>
-	Name: <input type = "text" name = "occ_hygiene_pic" form = "comment_form" id = "comment_form" value = "<?php echo $row["occ_hygiene_pic"]; ?>">
+	Name: <input type = "text" name = "occ_hygiene_pic" form = "comment_form" class = "comment_form_elements" value = "<?php echo $row["occ_hygiene_pic"]; ?>">
 	<br/>
 
 	Safety Engineering:<br/>
-	<textarea name = "safety_eng" form = "comment_form" id = "comment_form"><?php
+	<textarea name = "safety_eng" form = "comment_form" class = "comment_form_elements"><?php
 		if(!empty($row['safety_eng'])) {	// exist result from query
 			// retrieve existing comment as prefilled text in textarea
 			echo $row['safety_eng'];
 		}
 	 ?></textarea>
 	<br/>
-	Name: <input type = "text" name = "safety_eng_pic" form = "comment_form" id = "comment_form" value = "<?php echo $row["safety_eng_pic"]; ?>">
+	Name: <input type = "text" name = "safety_eng_pic" form = "comment_form" class = "comment_form_elements" value = "<?php echo $row["safety_eng_pic"]; ?>">
 	<br/>
 
 	Environmental Protection:<br/>
-	<textarea name = "envr_protect" form = "comment_form" id = "comment_form"><?php
+	<textarea name = "envr_protect" form = "comment_form" class = "comment_form_elements"><?php
 		if(!empty($row['envr_protect'])) {	// exist result from query
 			// retrieve existing comment as prefilled text in textarea
 			echo $row['envr_protect'];
 		}
 	 ?></textarea>
 	<br/>
-	Name: <input type = "text" name = "envr_protect_pic" form = "comment_form" id = "comment_form" value = "<?php echo $row["envr_protect_pic"]; ?>">
+	Name: <input type = "text" name = "envr_protect_pic" form = "comment_form" class = "comment_form_elements" value = "<?php echo $row["envr_protect_pic"]; ?>">
 	<br/>
 
 	Health Physics: <br/>
-	<textarea name = "health_phys" form = "comment_form" id = "comment_form"><?php
+	<textarea name = "health_phys" form = "comment_form" class = "comment_form_elements"><?php
 		if(!empty($row['health_phys'])) {	// exist result from query
 			// retrieve existing comment as prefilled text in textarea
 			echo $row['health_phys'];
 		}
 	 ?></textarea>
 	<br/>
-	Name: <input type = "text" name = "health_phys_pic" form = "comment_form" id = "comment_form" value = "<?php echo $row["health_phys_pic"]; ?>">
+	Name: <input type = "text" name = "health_phys_pic" form = "comment_form" class = "comment_form_elements" value = "<?php echo $row["health_phys_pic"]; ?>">
 	<br/>
 
 	Peer Review:<br/>
-	<textarea name = "peer_review" form = "comment_form" id = "comment_form"><?php
+	<textarea name = "peer_review" form = "comment_form" class = "comment_form_elements"><?php
 		if(!empty($row['peer_review'])) {	// exist result from query
 			// retrieve existing comment as prefilled text in textarea
 			echo $row['peer_review'];
 		}
 	 ?></textarea>
 	 <br/>
- 	Name: <input type = "text" name = "peer_review_pic" form = "comment_form" id = "comment_form" value = "<?php echo $row["peer_review_pic"]; ?>">
+ 	Name: <input type = "text" name = "peer_review_pic" form = "comment_form" class = "comment_form_elements" value = "<?php echo $row["peer_review_pic"]; ?>">
  	<br/><br/>
 	<form action = "" method = "post" id = "comment_form">
 	<!--use CSS to put submit at the bottom-->

@@ -87,7 +87,7 @@
 
   if($mode == "send_memo") {
     $mail = new PHPMailer;
-    $memo_no = $_GET['memo_no'];
+    $memo_no = $_POST['memo_no'];
 
     require("db_connect.php");
 
@@ -122,7 +122,7 @@
       $result = mysqli_store_result($db);
       $row = mysqli_fetch_row($result);
       $files[$files_count]['path'] = $row[0];
-      $files[$files_count]['name'] = $row[1];
+      $files[$files_count]['name'] = $row[1] . ".pdf";
       $files_count++;
   }
 
@@ -132,7 +132,7 @@
     if($result = mysqli_store_result($db)) {
       while($row = mysqli_fetch_row($result)) {
         $files[$files_count]['path'] = $row[0];
-        $files[$files_count]['name'] = $row[1];
+        $files[$files_count]['name'] = $row[1] . ".pdf";
         $files_count++;
       }
     }

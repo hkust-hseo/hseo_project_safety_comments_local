@@ -269,7 +269,7 @@
 	$out_file -> Output('F', $review_link);
 
 	// Add link to database
-	$update_query = "UPDATE proj_files SET review_link = '$review_link' WHERE ref_no = '$ref_no';";
+	$update_query = "INSERT INTO proj_files (ref_no, review_link) VALUES ('$ref_no', '$review_link') ON DUPLICATE KEY UPDATE review_link = '$review_link';";
 	$set_complete = "UPDATE proj_details SET completed = 1 WHERE ref_no = '$ref_no';";
 
   mysqli_query($db, $update_query) or die("Adding review link to files failed. ");

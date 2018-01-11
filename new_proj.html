@@ -66,8 +66,17 @@
 	};
 
 	function validateData(){
-		if (checkDates())
-			document.getElementById("details_form").submit();
+		if(checkData()) {
+			if (checkDates()) {
+				document.getElementById("details_form").submit();
+			}
+			else {
+				alert("Please fill in with valid date");
+			}
+		}
+		else {
+			alert("Please fill in all required fields");
+		}
 	}
 </script>
 
@@ -119,6 +128,10 @@
   <input type = "text" name = "supervisor">
 	<br/>
 
+	Email of Contact Person: <br/>
+	<input type = "email" name = "contact">
+	<br/>
+
 	Extension:<br/>
 	<input type = "number" name = "extn">
 	<br/>
@@ -137,7 +150,7 @@
 	<input type = "file" name = "proj_file" id = "upload_file" onchange = "checkFileEmpty()" accept = "application/pdf">
 	<br/><br/>
 
-	<input type = "button" value = "Create New Project" id="submit_button" onclick="validateData()">
+	<input type = "submit" value = "Create New Project" id="submit_button" onclick="validateData()">
 </form>
 </body>
 </html>

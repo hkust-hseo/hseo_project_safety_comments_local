@@ -11,6 +11,7 @@
   $room = $_POST["room"];
   $researcher = $_POST["researcher"];
   $supervisor = $_POST["supervisor"];
+  $contact = $_POST["contact"];
   $extn = $_POST["extn"];
 
   // injection prevention
@@ -22,6 +23,7 @@
   $room = mysqli_real_escape_string($db, $room);
   $researcher = mysqli_real_escape_string($db, $researcher);
   $supervisor = mysqli_real_escape_string($db, $supervisor);
+  $contact = mysqli_real_escape_string($db, $contact);
   $extn = mysqli_real_escape_string($db, $extn);
 
   // start of query declration
@@ -51,6 +53,10 @@
   if(!empty($supervisor)){  // if supervisor exists
     $insert_query .= ", supervisor";
     $values_query .= ", '$supervisor'";
+  }
+  if(!empty($contact)){  // if supervisor exists
+    $insert_query .= ", contact";
+    $values_query .= ", '$contact'";
   }
   if(!empty($extn)){  // if extn exists
     $insert_query .= ", extn";

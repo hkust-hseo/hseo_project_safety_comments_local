@@ -81,6 +81,10 @@
     <input type = "text" name = "supervisor" value = "<?php echo $row['supervisor']; ?>">
   	<br/>
 
+    Email of Contact Person: <br/>
+    <input type = "email" name = "contact" value = "<?php echo $row['contact']; ?>">
+    <br/>
+
   	Extension:<br/>
   	<input type = "number" name = "extn" value = "<?php echo $row['extn']; ?>">
   	<br/>
@@ -117,6 +121,7 @@
   $room = $_POST["room"];
   $researcher = $_POST["researcher"];
   $supervisor = $_POST["supervisor"];
+  $contact = $_POST["contact"];
   $extn = $_POST["extn"];
 
   // injection prevention
@@ -127,6 +132,7 @@
   $room = mysqli_real_escape_string($db, $room);
   $researcher = mysqli_real_escape_string($db, $researcher);
   $supervisor = mysqli_real_escape_string($db, $supervisor);
+  $contact = mysqli_real_escape_string($db, $contact);
   $extn = mysqli_real_escape_string($db, $extn);
 
   $update_query = "UPDATE proj_details ";
@@ -155,6 +161,9 @@
   }
   if(!empty($supervisor)){
     $details_query .= ", supervisor = '$supervisor'";
+  }
+  if(!empty($contact)){
+    $details_query .= ", contact = '$contact'";
   }
 
   $update_proj_query = $update_query . $details_query . $where_query;

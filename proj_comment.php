@@ -11,7 +11,7 @@ include "db_connect.php";?>
 
 <script src="jquery-3.2.1.js"></script>
 <script>
-	function saveComments(ref) {
+	  function saveComments(ref) {
 		// To get form elements and pass to save_comments.php (to be stored in dbms)
 		// Triggered by clicking "Save Comments" Button
 
@@ -35,7 +35,7 @@ include "db_connect.php";?>
 	      data: {
 					ref_no: ref,										// ref_no as parameter passed into js earlier (ref)
 	        occ_hygiene: input_values[0],		// occ_hygiene corresponses to first element (index 0) of comment_form
-					occ_hygiene_pic: input_values[1],		// u.s.
+					occ_hygiene_pic: input_values[1],	// u.s.
 					safety_eng: input_values[2],
 					safety_eng_pic: input_values[3],
 					envr_protect: input_values[4],
@@ -58,7 +58,6 @@ include "db_connect.php";?>
 	}
 
 </script>
-
 </head>
 
 <body>
@@ -152,7 +151,6 @@ include "db_connect.php";?>
 	<form action = "print_comments.php" method = "get" target = "_blank">
 		<button type = "submit" value = <?php echo $ref_no; ?> name = "ref_no" id = "complete_review">Complete Review</button>
 	</form>
-
 </div>
 </body>
 </html>

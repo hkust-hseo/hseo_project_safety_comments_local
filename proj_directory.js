@@ -11,6 +11,9 @@ Array.prototype.sameValues = function() {
 }
 
 function search() {
+  // initial page number = 1
+  var page = 1;
+
   // remove all rows in table: 'results'
   while(document.getElementById("result_display").firstChild) {
     document.getElementById("result_display").removeChild(document.getElementById("result_display").firstChild);
@@ -38,6 +41,7 @@ function search() {
       url: "proj_directory.php",
       type: "post",
       data: {
+        page: page-1,
         completed: completed,
         incomplete: incomplete,
         sent: sent,

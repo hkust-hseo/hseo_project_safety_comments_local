@@ -64,6 +64,9 @@ function search() {
       displayResults(results);
     }
   });
+
+  // update page number
+  document.getElementById("page_number").innerHTML = "Page "+page;
 }
 
 function displayResults(results) {
@@ -82,6 +85,7 @@ function displayResults(results) {
     document.getElementById("result_display").appendChild(display_row);
   }
 
+  // print the records from php
   for(var i = 0; i < results.length; i++) {
     if(i%2 == 0) {
       displayRow(results[i], "#EEEEEE");
@@ -165,6 +169,12 @@ function displayRow(output_row, background_color) {
   document.getElementById("result_display").appendChild(display_row);
 
   return;
+}
+
+function turnPage(offset)
+{
+  page = page + offset;
+  search();
 }
 
 function genMemo()

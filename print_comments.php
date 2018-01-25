@@ -1,5 +1,4 @@
 <?php
-//	$ref_no = $_GET["ref_no"];
 	/* print comments */
 	require "db_connect.php";
 	require("fpdf.php");
@@ -40,10 +39,12 @@
 			$this -> SetFont('Times', 'B', 12);
 			$this -> Cell(62, 10, "Date Received from Department: ", 0, 0);
 			$this -> SetFont('Times', 'U', 12);
-			if (!empty($row["receive_date"]))
+			if (!empty($row["receive_date"])) {
 				$this -> MultiCell(35, 10, $row["receive_date"], 0, 1);
-			else
+			}
+			else {
 				$this -> MultiCell(35, 10, "N/A", 0, 1);
+			}
 
 			// due_date
 			$this -> SetFont('Times', 'B', 12);
@@ -114,17 +115,16 @@
 			//$max_char = $width / 2.5;			// width of one courier char = 2.5mm
 			$max_char = 42;
 			$cont_char = 0;
-			while ($char_ptr < strlen($text))
-			{
+			while ($char_ptr < strlen($text)) {
 				// TODO: take into account full words
 				$word_length = 0;
 				// new line detected
 				if ($text[$char_ptr] == "\n") {
 					$lines++;
 					$cont_char = 0;
-					 //echo "is new line at char_ptr = " . $char_ptr ."\n";
+					//echo "is new line at char_ptr = " . $char_ptr ."\n";
 				}
-				else if ($cont_char > $max_char){
+				else if ($cont_char > $max_char) {
 					$lines++;
 					$cont_char = 1;
 					//echo "max_char new line at char_ptr = " . $char_ptr ."\n";
@@ -145,7 +145,7 @@
 			// full_text = comment with name of pic and Date
 			$full_text = "";
 
-			if (!empty($pic)){
+			if (!empty($pic)) {
 				$full_text .= "Name" . "                          ". "Date";
 				$full_text .= "\n\n";
 				$date = date('Y/m/d');
@@ -163,7 +163,7 @@
 
 			// calculate height: in char, in mm, plus misc
 			$height = $this -> CalLines(100, $full_text);		// width of comment section = 100 mm
-			if ($height > 2){
+			if ($height > 2) {
 				for($i=0; $i<=$height-2; $i++)
 					$area .= "\n";
 			}
@@ -186,7 +186,7 @@
 
 			$this -> MultiCell(40, 5, $area, 'B', 'C');
 			$this -> SetXY(50, $currentY);
-			if (!empty($full_text)){
+			if (!empty($full_text)) {
 				$this -> MultiCell(100, 5, $full_text, 'LBR', 'L');
 				if(!empty($pic)) {
 					$this -> Line(50, $currentY+15, 150, $currentY+15);
@@ -215,13 +215,6 @@
 			$this -> CommentRow("Environmental\nProtection", $row["envr_protect"], $row["envr_protect_pic"]);
 			$this -> CommentRow("Health\nPhysics", $row["health_phys"], $row["health_phys_pic"]);
 			$this -> CommentRow("Peer\nReview", $row["peer_review"], $row["peer_review_pic"]);
-			// Occupational Hygiene
-	/*		$this -> SetX(50);
-			$occ_hygiene_full = $row["occ_hygiene"];
-			$occ_hygiene_full .= "\n\n";
-			$occ_hygiene_full .= "By " . $row["occ_hygiene_pic"] . " on " . date("Y-m-d");
-			$this -> MultiCell(100, 5, $occ_hygiene_full, 'LBR', 'L');
-			*/
 		}
 	}
 
@@ -263,7 +256,7 @@
 
 	// Store review file
 	$review_link = "documents/reviews/".$ref_no."_review.pdf";
-	if(file_exists($reivew_link)){
+	if(file_exists($review_link)) {
 		unlink($review_link);
 	}
 	$out_file -> Output('F', $review_link);

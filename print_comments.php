@@ -256,7 +256,7 @@
 
 	// Store review file
 	$review_link = "documents/reviews/".$ref_no."_review.pdf";
-	if(file_exists($reivew_link)) {
+	if(file_exists($review_link)) {
 		unlink($review_link);
 	}
 	$out_file -> Output('F', $review_link);

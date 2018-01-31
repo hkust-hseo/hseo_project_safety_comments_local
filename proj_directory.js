@@ -72,6 +72,8 @@ function search() {
 function displayResults(results) {
   // call display function for each row of actual data
 
+  document.getElementById("page_nav").style.visibility = "visible";
+
   // put message if there is no record
   if(results.length == 0) {
     var display_row = document.createElement("tr");

@@ -54,19 +54,19 @@ function search() {
   });
 
   // after data is retrieved
-  request.done(function(response, textStatus, jqXHR){
+  request.done(function(response, textStatus, jqXHR) {
     if(response == "null") {
-      console.log("No records");
+      console.log("No response");
     }
     else {
       var results = JSON.parse(response);
-      //console.log(response);
+      console.log("size of result = " + results.length);
       displayResults(results);
     }
   });
 
   // update page number
-  document.getElementById("page_number").innerHTML = "Page "+page;
+  document.getElementById("page_number").innerHTML = "Page " + page;
 }
 
 function displayResults(results) {

@@ -111,7 +111,6 @@
     // memo, individual comment form
     $fetch_memo_file_query = "SELECT file_link, memo_no FROM memo_details WHERE memo_no = '$memo_no';";
     $fetch_proj_files_query = "SELECT review_link, ref_no FROM proj_files WHERE ref_no IN (SELECT ref_no FROM proj_details WHERE memo = '$memo_no');";
-    $fetch_contact_query = "SELECT contact FROM proj_details WHERE ref_no IN(SELECT ref_no FROM proj_details WHERE memo = '$memo_no');";
 
     // Put in corresponding receiver details
     // send to contact person

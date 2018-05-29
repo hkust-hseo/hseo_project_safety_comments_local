@@ -25,6 +25,9 @@ function search() {
   var room = document.getElementById("room_input").value;
   var reviewer = document.getElementById("reviewer_input").value;
 
+  var start_date = document.getElementById("start_date").value;
+  var end_date = document.getElementById("end_date").value;
+
   var completed = document.getElementById("completed").checked;
   var incomplete = document.getElementById("incomplete").checked;
   var sent = document.getElementById("sent").checked;
@@ -49,7 +52,9 @@ function search() {
         supervisor: supervisor,
         title: title,
         room: room,
-        reviewer: reviewer
+        reviewer: reviewer,
+        start_date: start_date,
+        end_date: end_date
       }
   });
 
@@ -59,6 +64,7 @@ function search() {
       console.log("No response");
     }
     else {
+      console.log(response);
       var results = JSON.parse(response);
       console.log("size of result = " + results.length);
       displayResults(results);

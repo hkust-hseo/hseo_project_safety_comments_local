@@ -99,8 +99,8 @@
       $dept = $row[0];
       $contact = $row[1];
       // in case of no contact email
-      if(empty($contact)) {
-        $contact = "srapproval@ust.hk";
+      if(empty($contact) || ($contact == "")) {
+        $contact = "ylauad@connect.ust.hk";
       }
     } else {
       echo "Error accessing database. Error code: " . $mysqli->error;

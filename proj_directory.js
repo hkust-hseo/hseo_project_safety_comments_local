@@ -1,5 +1,3 @@
-var page = 1;
-
 Array.prototype.sameValues = function() {
   if(this.length == 1) {
     return true;
@@ -43,7 +41,6 @@ function search() {
       url: "proj_directory.php",
       type: "post",
       data: {
-        offset: (page-1)*10,
         completed: completed,
         incomplete: incomplete,
         sent: sent,
@@ -70,15 +67,10 @@ function search() {
       displayResults(results);
     }
   });
-
-  // update page number
-  document.getElementById("page_number").innerHTML = "Page " + page;
 }
 
 function displayResults(results) {
   // call display function for each row of actual data
-
-  document.getElementById("page_nav").style.visibility = "visible";
 
   // put message if there is no record
   if(results.length == 0) {
@@ -177,12 +169,6 @@ function displayRow(output_row, background_color) {
   document.getElementById("result_display").appendChild(display_row);
 
   return;
-}
-
-function turnPage(offset)
-{
-  page = page + offset;
-  search();
 }
 
 function genMemo()

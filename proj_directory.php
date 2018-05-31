@@ -1,7 +1,6 @@
 <?php
   require "db_connect.php";
 
-  $offset = $_POST["offset"];
   $completed = $_POST["completed"];
   $incomplete = $_POST["incomplete"];
   $sent = $_POST["sent"];
@@ -120,8 +119,7 @@
     }
     $query .= "AND sent = 1 ";
   }
-  $query .= "ORDER BY due_date DESC ";
-  $query .= "LIMIT 10 OFFSET ".$offset." ";
+  $query .= "ORDER BY due_date DESC;";
 
   // Execute query
   $data_count = 0;

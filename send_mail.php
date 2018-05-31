@@ -100,7 +100,7 @@
       $contact = $row[1];
       // in case of no contact email
       if(empty($contact)) {
-        $contact = "kfyan@ust.hk";
+        $contact = "ylauad@connec.ust.hk";
       }
     } else {
       echo "Error accessing database. Error code: " . $mysqli->error;

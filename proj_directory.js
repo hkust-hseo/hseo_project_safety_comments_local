@@ -1,3 +1,5 @@
+var page = 1;
+
 Array.prototype.sameValues = function() {
   if(this.length == 1) {
     return true;
@@ -23,6 +25,9 @@ function search() {
   var room = document.getElementById("room_input").value;
   var reviewer = document.getElementById("reviewer_input").value;
 
+  var start_date = document.getElementById("start_date").value;
+  var end_date = document.getElementById("end_date").value;
+
   var completed = document.getElementById("completed").checked;
   var incomplete = document.getElementById("incomplete").checked;
   var sent = document.getElementById("sent").checked;
@@ -38,6 +43,7 @@ function search() {
       url: "proj_directory.php",
       type: "post",
       data: {
+        offset: (page-1)*10,
         completed: completed,
         incomplete: incomplete,
         sent: sent,
@@ -46,25 +52,33 @@ function search() {
         supervisor: supervisor,
         title: title,
         room: room,
-        reviewer: reviewer
+        reviewer: reviewer,
+        start_date: start_date,
+        end_date: end_date
       }
   });
 
   // after data is retrieved
-  request.done(function(response, textStatus, jqXHR){
+  request.done(function(response, textStatus, jqXHR) {
     if(response == "null") {
-      console.log("No records");
+      console.log("No response");
     }
     else {
+      console.log(response);
       var results = JSON.parse(response);
-      //console.log(response);
+      console.log("size of result = " + results.length);
       displayResults(results);
     }
   });
+
+  // update page number
+  document.getElementById("page_number").innerHTML = "Page " + page;
 }
 
 function displayResults(results) {
   // call display function for each row of actual data
+
+  document.getElementById("page_nav").style.visibility = "visible";
 
   // put message if there is no record
   if(results.length == 0) {
@@ -79,6 +93,7 @@ function displayResults(results) {
     document.getElementById("result_display").appendChild(display_row);
   }
 
+  // print the records from php
   for(var i = 0; i < results.length; i++) {
     if(i%2 == 0) {
       displayRow(results[i], "#EEEEEE");
@@ -162,6 +177,12 @@ function displayRow(output_row, background_color) {
   document.getElementById("result_display").appendChild(display_row);
 
   return;
+}
+
+function turnPage(offset)
+{
+  page = page + offset;
+  search();
 }
 
 function genMemo()

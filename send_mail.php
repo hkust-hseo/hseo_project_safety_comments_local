@@ -99,8 +99,8 @@
       $dept = $row[0];
       $contact = $row[1];
       // in case of no contact email
-      if(empty($contact) || ($contact == "")) {
-        $contact = "ylauad@connect.ust.hk";
+      if(empty($contact)) {
+        $contact = "kfyan@ust.hk";
       }
     } else {
       echo "Error accessing database. Error code: " . $mysqli->error;
@@ -110,6 +110,18 @@
     // memo, individual comment form
     $fetch_memo_file_query = "SELECT file_link, memo_no FROM memo_details WHERE memo_no = '$memo_no';";
     $fetch_proj_files_query = "SELECT review_link, ref_no FROM proj_files WHERE ref_no IN (SELECT ref_no FROM proj_details WHERE memo = '$memo_no');";
+    $fetch_contact_query = "SELECT contact FROM proj_details WHERE ref_no IN(SELECT ref_no FROM proj_details WHERE memo = '$memo_no');";
+
+    // Put in corresponding receiver details
+    // send to contact person
+    initMail($mail, $contact);
+    // cc to department representative
+    if($dept == "CBE") {
+      $mail->AddCC($cbe_email);
+    }
+    else if($dept == "BIEN") {
+      $mail->AddCC($bien_email);
+    }
 
     // Put in corresponding receiver details
     // send to contact person

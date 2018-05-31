@@ -40,7 +40,7 @@
     initMail($mail, director_email);
 
     // variables
-    $memo_url = "143.89.148.116/hseo_project_safety_comments_local/pending_memo.php";    // URL of pending memo page
+    $memo_url = "143.89.195.131/hseo_project_safety_comments/pending_memo.php";    // URL of pending memo page
 
     $mail->Subject = "Pending Memos";
 
@@ -105,7 +105,6 @@
     } else {
       echo "Error accessing database. Error code: " . $mysqli->error;
     }
-
 
     // SQL to fetch all related file links
     // memo, individual comment form
@@ -173,6 +172,55 @@
     for($i = 0; $i < $files_count; $i++) {
       $mail->addAttachment($files[$i]['path'], $files[$i]['name'].".pdf");
     }
+  }
+
+  if($mode == "pending_memo_one_week") {
+      $mail = new PHPMailer;
+      initMail($mail, director_email);
+
+      // variables
+      $memo_url = "143.89.195.131/hseo_project_safety_comments/pending_memo.php";    // URL of pending memo page
+
+      $mail->Subject = "Reminder: Overdue Memo Approval";
+
+      // HTML mail body
+      $mail->Body = "Dear Sir/Madam,<br/><br/>";  // Email content
+      $mail->Body .= "There ";
+      if($memo_count <= 1) {
+        $mail->Body .= "is 1 memo";
+      }
+      else {
+        $mail->Body .= "are ";
+        $mail->Body .= $memo_count;
+        $mail->Body .= " memos";
+      }
+      $mail->Body .= "pending for your approval.<br/>";
+
+      $mail->Body .= "<br/>Please head to:<br/>";
+      $mail->Body .= "<a href='".$memo_url."'>".$memo_url."</a>";   // HTML mail version (link)
+      $mail->Body .= "<br/>for further actions.<br/><br/>";
+
+      $mail->Body .= body_ending;
+
+      // Alternative body in plain text (in case HTML mail not supported)
+      $mail->AltBody = "Dear Sir/Madam,\n\n";  // Email content
+      $mail->AltBody .= "The following ";
+      if($ref_count <= 1) {
+        $mail->AltBody .= "workplan is ";
+    }
+      else {
+        $mail->AltBody .= "workplans are ";
+      }
+      $mail->AltBody .= "pending for your approval.\n";
+      for($i = 0; $i < $ref_count; $i++) {
+        $mail->AltBody .= $ref_array[$i]."\n";
+      }
+
+      $mail->AltBody .= "\nPlease head to:\n";
+      $mail->AltBody .= $memo_url;        // Plain text version: non-clickable
+      $mail->AltBody .= "\nfor further actions.\n\n";
+      $alt_ending = str_replace("<br/>","\n", body_ending);
+      $mail->AltBody .= $alt_ending;
   }
 
   // Send email

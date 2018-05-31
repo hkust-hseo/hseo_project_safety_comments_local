@@ -13,6 +13,8 @@
   $title = $_POST["title"];
   $room = $_POST["room"];
   $reviewer = $_POST["reviewer"];
+  $start_date = $_POST["start_date"];
+  $end_date = $_POST["end_date"];
   $not_first = false;
 
   $query_head = "SELECT * FROM proj_details ";
@@ -23,7 +25,7 @@
     $reviewer_query = "SELECT ref_no FROM proj_comments WHERE MATCH(occ_hygiene_pic,safety_eng_pic,envr_protect_pic,health_phys_pic,peer_review_pic) AGAINST ('$reviewer' IN BOOLEAN MODE)";
   }
 
-  if(empty($ref_no) && empty($supervisor) && empty($title) && empty($room) && empty($reviewer)) {
+  if(empty($ref_no) && empty($supervisor) && empty($title) && empty($room) && empty($reviewer) && empty($start_date) && empty($end_date)) {
     // All empty input --> Return all entries
     $where_exist = false;
   }
@@ -54,6 +56,20 @@
         $details_query .= "AND ";
       }
       $details_query .= "MATCH(room) AGAINST('$room' IN BOOLEAN MODE) ";
+      $not_first = true;
+    }
+    if(!empty($start_date)) {
+      if($not_first) {
+        $details_query .= "AND ";
+      }
+      $details_query .= "receive_date >= '$start_date' ";
+      $not_first = true;
+    }
+    if(!empty($end_date)) {
+      if($not_first) {
+        $details_query .= "AND ";
+      }
+      $details_query .= "receive_date <= '$end_date' ";
       $not_first = true;
     }
   }

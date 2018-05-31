@@ -31,6 +31,10 @@
           <td><input id="reviewer_input" type="text" style="width: 150px;"/></td>
         </tr>
         <tr>
+          <td>Start Date:
+          <br/><input id="start_date" type="date"></td>
+          <td>End Date:
+          <br/><input id="end_date" type="date"></td>
           <td><input id="completed" name="complete" type="radio"/>Completed Only
           <br/><input id="incomplete" name="complete" type="radio"/>Incomplete Only
           <br/><input id="all_reviews" name="complete" type="radio" checked/>All Reviews</td>
@@ -57,6 +61,13 @@
         </thead>
         <tbody id="result_display"></tbody>
       </table>
+
+      <!-- <div id="page_nav" style="visibility: hidden">
+        <button class="page_nav_button" onclick="turnPage(-1)">&lt; Prev</button>
+        <span id="page_number">Page 0</span>
+        <button class="page_nav_button" onclick="turnPage(1)">Next &gt;</button>
+      </div>
+    -->
 
       <button id="memo_button" onclick="genMemo()">Generate Memo</button>
 
